@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Hisam</title>
+    <style>
+        
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: #080808;
+    color: white;
+    padding-top: 80px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #ff0000;
+}
+
+nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ff0000; /* Berubah jadi merah saat disentuh */
+}
+
+
+nav ul {
+    display: flex;
+    /* Tambahkan gap agar ada jarak antar menu */
+    gap: 2rem; 
+    list-style: none;
+}
+
+/* Agar navbar secara keseluruhan punya ruang di pinggir */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 5%; /* 5% memberi ruang di kiri-kanan agar tidak mentok layar HP */
+    background: rgba(0, 0, 0, 0.8); /* Hitam transparan sedikit */
+    backdrop-filter: blur(10px); /* Efek blur kaca seperti web modern */
+    position: fixed; /* Biar nempel di atas pas di-scroll */
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px 10%;
+    min-height: 80vh;
+}
+
+.hero-text h1 {
+    font-size: 50px;
+    margin: 10px 0;
+}
+
+.hero-text p span {
+    color: #ff0000;
+    font-weight: bold;
+}
+
+.btn-group {
+    display: flex;
+    gap: 1.5rem; /* Jarak antar tombol */
+    margin-top: 2rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background-color: #ff0000; /* Merah */
+    color: white;
+    border: 2px solid #ff0000;
+    border-radius: 40px; 
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.5s ease;
+}
+
+
+.btn:nth-child(2) {
+    background-color: transparent;
+    color: #ff0000;
+}
+
+/* Efek saat tombol disentuh di HP */
+.btn:hover {
+    background-color: #ff0000;
+    color: white;
+    box-shadow: 0 0 15px #ff0000;
+    transform: scale(1.05);
+}
+@media (max-width: 600px) {
+    .btn-group {
+        flex-direction: row; 
+        justify-content: center; /* Rata tengah */
+    }
+    
+    .btn {
+        padding: 10px 20px; 
+        font-size: 14px;
+    }
+}
+
+
+.hero-img img {
+    width: 250px; /* Ukuran bisa kamu sesuaikan */
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%; /* Membuat gambar bulat */
+    border: 5px solid #ff0000; /* Garis pinggir merah */
+    /* Efek Glow: Bayangan luar merah yang menyala */
+    box-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000; 
+    transition: 0.5s ease;
+}
+
+/* Tambahkan efek saat foto ditekan/sentuh (hover) */
+.hero-img img:hover {
+    box-shadow: 0 0 30px #ff0000, 0 0 60px #ff0000;
+    transform: scale(1.05); /* Sedikit membesar */
+}
+
+@keyframes glow-bounce {
+    0% { box-shadow: 0 0 15px #ff0000; }
+    50% { box-shadow: 0 0 35px #ff0000; }
+    100% { box-shadow: 0 0 15px #ff0000; }
+}
+
+.hero-img img {
+    animation: glow-bounce 3s infinite ease-in-out;
+}
+
+
+/* Biar rapi di HP */
+@media (max-width: 600px) {
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+    .hero-img img {
+        width: 200px;
+        margin-bottom: 20px;
+    }
+}
+
+.about, .services {
+    padding: 100px 10%;
+    text-align: center;
+}
+
+h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+h2 span {
+    color: #ff0000;
+}
+
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.service-box {
+    background: #1f1f1f;
+    padding: 30px;
+    border-radius: 10px;
+    transition: 0.3s;
+    border: 1px solid transparent;
+}
+
+.service-box:hover {
+    border-color: #ff0000;
+    transform: translateY(-10px);
+}
+
+/* Portfolio Section */
+.portfolio {
+    background: #080808;
+    padding: 100px 10%;
+}
+
+.portfolio-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    align-items: center;
+    gap: 2.5rem;
+    margin-top: 2rem;
+}
+
+.portfolio-box {
+    position: relative;
+    border-radius: 2rem;
+    box-shadow: 0 0 1rem #ff0000;
+    overflow: hidden;
+    display: flex;
+}
+
+.portfolio-box img {
+    width: 100%;
+    transition: .5s ease;
+    opacity: 0.7;
+}
+
+.portfolio-box:hover img {
+    transform: scale(1.1);
+    opacity: 0.4;
+}
+.portfolio-box:hover {
+    box-shadow: 0 0 25px #ff0000;
+    transform: scale(1.05); /* Sedikit membesar saat disentuh */
+    transition: 0.3s;
+}
+
+.portfolio-layer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.1), #ff0000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 4rem;
+    transform: translateY(100%);
+    transition: .5s ease;
+}
+
+.portfolio-box:hover .portfolio-layer {
+    transform: translateY(0);
+}
+
+/* Contact Section */
+.contact {
+    padding: 100px 10%;
+}
+
+.contact form {
+    max-width: 70rem;
+    margin: 1rem auto;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.contact form .input-box {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.contact form .input-box input, 
+.contact form textarea {
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 1rem;
+    color: white;
+    background: #1f1f1f;
+    border-radius: .8rem;
+    margin: .7rem 0;
+    border: none;
+}
+
+.contact form .input-box input {
+    width: 49%;
+}
+
+@media (max-width: 600px) {
+    .contact form .input-box input {
+        width: 100%;
+    }
+}
+
+        /* Kamu bisa taruh di bagian paling bawah file CSS */
+.typing {
+    color: #ff0000; /* Warna merah */
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* Efek sedikit glow agar mirip video */
+}
+
+.social-media {
+   margin-bottom: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.social-media a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    background: transparent;
+    border: 2px solid #ff0000; /* Border merah */
+    border-radius: 50%; /* Bulat sempurna */
+    font-size: 25px;
+    color: #ff0000;
+    transition: 0.5s ease;
+    text-decoration: none;
+}
+
+.social-media a:hover {
+    background: #ff0000;
+    color: white;
+    box-shadow: 0 0 20px #ff0000; /* Efek neon menyala */
+    transform: translateY(-5px); /* Sedikit naik ke atas */
+}
+
+.about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    background: #121212; /* Warna gelap sedikit beda dari hero agar ada pemisah */
+    padding: 100px 7% 100px;
+}
+
+.about-img img {
+    width: 35vw; /* Ukuran fleksibel berdasarkan lebar layar */
+    border-radius: 20px; /* Sudut melengkung, bukan bulat */
+    box-shadow: 0 0 20px #ff0000;
+}
+
+.heading {
+    font-size: 4.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.heading span {
+    color: #ff0000;
+}
+
+.about-content h2 {
+    text-align: left;
+    line-height: 1.2;
+}
+
+.about-content h3 {
+    font-size: 2.6rem;
+    color: white;
+}
+
+.about-content p {
+    font-size: 1.6rem;
+    margin: 2rem 0 3rem;
+    color: #e0e0e0;
+}
+
+@media (max-width: 768px) {
+    .about {
+        flex-direction: column-reverse; /* Gambar di atas, teks di bawah */
+    }
+    
+    .about-img img {
+        width: 70vw; /* Lebih besar saat di HP */
+        margin-top: 4rem;
+    }
+}
+
+footer {
+    font-size: 20px;
+    border: 1;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    </style>
+    
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Porto<span>folio.</span></div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h3>Hello, I am</h3>
+            <h1>Hisam wahyudi</h1>
+            <p>I am a <span class="typing">Frontend Developer</span></p>
+            <div class="btn-group">
+                <a href="#" class="btn">Download CV</a>
+                <a href="#" class="btn">Contact Me</a>
+            </div>
+        </div>
+        <div class="hero-img">
+            <img src="Profil.jpg" alt="Profile Hisam">
+        </div>
+    </section>
+    
+   <section class="about" id="about">
+    <div class="about-img">
+        <img src="e.jpg" alt="About Me"> </div>
+    
+    <div class="about-content">
+        <h2 class="heading">About <span>Me</span></h2>
+        <h3>Future Full Stack Developer</h3>
+        <p>Saya adalah calon developer yang sedang mendalami coding setiap malam di sela kesibukan sekolah dan bekerja. Saya fokus belajar Frontend dan bercita-cita menjadi Full Stack Developer.</p>
+        <a href="#" class="btn">Read More</a>
+    </div>
+</section>
+
+
+<section class="services">
+    <h2 class="heading">My <span>Services</span></h2>
+    <div class="services-container" id="service-list">
+        </div>
+</section>
+
+    <section class="portfolio" id="portfolio">
+        <h2 class="heading">Latest <span>Project</span></h2>
+        <div class="portfolio-container" id="portfolio-list">
+            </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2 class="heading">Contact <span>Me!</span></h2>
+        <form action="#">
+            <div class="input-box">
+                <input type="text" placeholder="Full Name">
+                <input type="email" placeholder="Email Address">
+            </div>
+            <div class="input-box">
+                <input type="number" placeholder="Mobile Number">
+                <input type="text" placeholder="Email Subject">
+            </div>
+            <textarea cols="30" rows="10" placeholder="Your Message"></textarea>
+            <input type="submit" value="Send Message" class="btn" style="border: none;">
+        </form>
+    </section>
+
+                <div class="social-media">
+    <a href="#"><i class='bx bxl-facebook'></i></a>
+    <a href="#"><i class='bx bxl-instagram'></i></a>
+    <a href="#"><i class='bx bxl-github'></i></a>
+    <a href="#"><i class='bx bxl-linkedin'></i></a>
+</div>
+
+    <footer>
+        <div class="footer-text">
+            <p>2026 by Hisam | All Rights Reserved.</p>
+        </div>
+    </footer>
+
+
+
+    <script>
+        
+        
+        const services = [
+    { title: "Web Development", desc: "Membangun website responsif." },
+    { title: "UI Design", desc: "Desain tampilan yang ramah pengguna." },
+    { title: "Maintenance", desc: "Perawatan website secara berkala." }
+];
+
+const serviceList = document.getElementById("service-list");
+
+services.forEach(item => {
+    serviceList.innerHTML += `
+        <div class="service-box">
+            <h3>${item.title}</h3>
+            <p>${item.desc}</p>
+        </div>
+    `;
+});
+
+const projects = [
+    { title: "E-commerce Web", img: "A.jpg", desc: "Toko online responsif." },
+    { title: "Personal Blog", img: "B.jpg", desc: "Blog pribadi dark mode." },
+    { title: "Task Manager", img: "C.jpg", desc: "Aplikasi pengelola tugas." }
+];
+
+const portfolioList = document.getElementById("portfolio-list");
+
+projects.forEach(proj => {
+    portfolioList.innerHTML += `
+        <div class="portfolio-box">
+            <img src="${proj.img}" alt="">
+            <div class="portfolio-layer">
+                <h4>${proj.title}</h4>
+                <p>${proj.desc}</p>
+                <a href="#"><i class='bx bx-link-external'></i></a>
+            </div>
+        </div>
+    `;
+});
+
+    </script>
+    
+        <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+      var typed = new Typed(".typing", {
+        strings: ["Frontend Developer", "Full Stack Developer", "Creative Designer"],
+        typeSpeed: 100,
+        backSpeed: 60,
+        loop: true
+      });
+    </script>
+</body>
+</html>
+
+</body>
+</html>
